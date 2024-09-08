@@ -1,12 +1,18 @@
-import React from 'react';
-import './index.css';
+import React, { useState } from 'react';
+import Editor from '@monaco-editor/react';
 
 function App() {
+  const [code, setCode] = useState('<h1>Hello, World!</h1>');
+
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-500">
-        Tailwind is working!
-      </h1>
+    <div className="h-screen">
+      <Editor
+        height="90vh"
+        defaultLanguage="html"
+        theme="vs-dark"
+        value={code}
+        onChange={(value) => setCode(value || '')}
+      />
     </div>
   );
 }
